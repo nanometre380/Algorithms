@@ -1,0 +1,17 @@
+import sys
+input = sys.stdin.readline
+
+ext = {}
+
+num = int(input())
+
+for _ in range(num) :
+    file = input().rstrip().split('.')
+    if file[1] in ext.keys() :
+        ext[file[1]] += 1
+    else :
+        ext[file[1]] = 1
+sorted_ext = sorted(ext.items())
+
+for k, v in sorted_ext :
+    print(k, v)
