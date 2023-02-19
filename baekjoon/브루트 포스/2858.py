@@ -5,3 +5,12 @@
 import sys
 input = sys.stdin.readline
 
+def get_room(r, b):
+    for w in range(5000) :
+        for h in range(5000) :
+            if r == w*2 + (h-2)*2 and b == w*h-r :
+                return max(w, h), min(w, h)
+
+r, b = map(int, input().split())
+
+print(*get_room(r, b))
