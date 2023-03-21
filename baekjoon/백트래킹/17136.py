@@ -2,3 +2,5 @@
 import sys
 input = sys.stdin.readline
 
+# 색종이 붙이기
+
