@@ -8,7 +8,6 @@ def dfs(visited_dfs, start, graph) :
     print(start, end=' ')
     for i in graph[start] :
         if visited_dfs[i] != True : 
-            visited_dfs[i] = True
             dfs(visited_dfs, i, graph)
 
 def bfs(visited_bfs, start, graph) :
