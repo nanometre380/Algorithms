@@ -28,6 +28,8 @@ def check_right(u) :
             return False
     if not stk : 
         return True
+    else :
+        return False
     
 def make(p) :
     v = p[:]
@@ -38,16 +40,20 @@ def make(p) :
     if check_right(u) == True : 
         return u+make(v)
     else : 
-        temp = u[-2:0:-1]
-        result += ("(" + make(v) + ")" + temp)
+        temp = u[1:-1]
+        new_temp = ""
+        for t in temp :
+            if t == "(" :
+                new_temp += ")"
+            else :
+                new_temp += "("
+        result += ("(" + make(v) + ")" + new_temp)
         return result
+    return result
         
 def solution(p):
     answer = ''
     if check_right(p) == True :
         return p
     return make(p)
-
-p = "()))((()"
-
-print(solution(p))
+    
