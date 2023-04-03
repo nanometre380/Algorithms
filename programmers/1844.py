@@ -1,3 +1,33 @@
+# 최단거리 문제는 BFS로 풀자!
+from collections import deque
+
+def solution(maps):
+    answer = 0
+    max_x = len(maps)
+    max_y = len(maps[0])
+    def dfs(x, y) :
+        dx = [-1, 1, 0, 0] #상하좌우
+        dy = [0, 0, -1, 1]
+        queue = deque()
+        queue.append((x, y))
+        while queue : 
+            cur_x, cur_y = queue.popleft()
+            for i in range(4) :
+                x, y = cur_x+dx[i], cur_y+dy[i]
+                if x < 0 or x >= max_x or y < 0 or y >= max_y :
+                    continue
+                if maps[x][y] == 0 :
+                    continue
+                if maps[x][y] == 1 :
+                    maps[x][y] += maps[cur_x][cur_y]
+                    queue.append((x, y))
+        return maps[max_x-1][max_y-1]
+    answer = dfs(0, 0)
+    return answer if answer != 1 else -1
+
+
+# DFS - 효율성 테스트에서 걸림
+"""
 min_case = float('inf')
 max_r, max_c = 0, 0
 check = []
@@ -39,3 +69,4 @@ def solution(maps):
     if min_case == float('inf') :
         min_case = -1
     return min_case
+"""
