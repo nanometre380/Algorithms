@@ -17,7 +17,6 @@ def is_prime(n) :
 def solution(n, k):
     answer = 0
     converted = convert(n, k)
-    index_zero = []
     
     splitted = converted.split('0')
     
