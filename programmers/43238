@@ -1,0 +1,17 @@
+def solution(n, times):
+    answer = 10**18
+    left = 1
+    right = 10**18
+    while left <= right :
+        mid = (left+right)//2
+        temp = 0
+        for t in times :
+            temp += mid//t
+            if temp >= n:
+                break
+        if temp < n :
+            left = mid+1
+        elif temp >= n :
+            right = mid-1
+            answer = min(answer, mid)
+    return answer
